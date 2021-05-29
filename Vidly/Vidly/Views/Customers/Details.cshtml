@@ -6,4 +6,8 @@
 
 <h1>Customer name:</h1>
 <h2 style="color:forestgreen">@Model.Name</h2>
-
+<h2>Membership: @Model.MembershipType.Name</h2>
+@if(Model.BirthdayDate.HasValue)
+    {
+        <h2>Birthday: @Model.BirthdayDate.Value.ToShortDateString()</h2>
+    }
