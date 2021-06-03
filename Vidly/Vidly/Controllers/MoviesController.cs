@@ -23,23 +23,56 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
-        // GET: Movies/Random
-        public ActionResult Random()
+        public ActionResult Edit(int id)
         {
-            var movie = new Movie() {Title = "Shrek!"};
-            var customers = new List<Customer>
-            {
-                new Customer{ Name = "Customer1"},
-                new Customer{ Name = "Customer2"}
-            };
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var genreTypes = _context.Genres.ToList();
 
-            var viewModel = new RandomMovieViewModel
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new MovieFormViewModel
             {
                 Movie = movie,
-                Customers = customers
+                Genres = genreTypes
             };
 
-            return View(viewModel);
+            return View("MovieForm", viewModel);
+        }
+
+        public ActionResult New()
+        {
+            var genreTypes = _context.Genres.ToList();
+            var viewModel = new MovieFormViewModel
+            {
+                Genres = genreTypes
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            if (movie.Id == 0)
+            {
+                movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+
+                movieInDb.Title = movie.Title;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.GenreId = movie.GenreId;
+                movieInDb.NumberInStock = movie.NumberInStock;
+            }
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
         }
         
         //GET: Movies

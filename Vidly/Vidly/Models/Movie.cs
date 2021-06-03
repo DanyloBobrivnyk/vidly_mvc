@@ -10,9 +10,11 @@ namespace Vidly.Models
         [Required]
         public string Title { get; set; }
         
-        [Required]
         public Genre Genre { get; set; }
         
+        [Required]
+        public byte GenreId { get; set; }
+
         [Required]
         public DateTime ReleaseDate { get; set; }
         [Required]
