@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class GenreId : DbMigration
+    public partial class CustomerModelProp : DbMigration
     {
         public override void Up()
         {

@@ -8,6 +8,9 @@
 @if (!Model.Any())
 {
     <text>There is no movies to show.</text>
+    <p>
+        @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
+    </p>
 }
 else
 {
@@ -19,24 +22,24 @@ else
     <div>
         <table class="table table-hover table-bordered">
             <thead>
-            <tr>
-                <th>Movie</th>
-                <th>Genre</th>
-            </tr>
+                <tr>
+                    <th>Movie</th>
+                    <th>Genre</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var movie in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.ActionLink(movie.Title, "Edit", "Movies", new { id = movie.Id }, null)
-                    </td>
-                    <td>
-                        @movie.Genre.Name
-                    </td>
-                </tr>
-            }
+                @foreach (var movie in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(movie.Title, "Edit", "Movies", new { id = movie.Id }, null)
+                        </td>
+                        <td>
+                            @movie.Genre.Name
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
-    </div>  
+    </div>
 }

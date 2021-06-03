@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,9 +16,11 @@ namespace Vidly.Models
         public string Name { get; set; }
         
         public bool IsSubscribedToNewsLetter { get; set; }
-        
+
+        [ForeignKey("MembershipTypeId")]
         public MembershipType MembershipType { get; set; }
 
+        [Required]
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
         

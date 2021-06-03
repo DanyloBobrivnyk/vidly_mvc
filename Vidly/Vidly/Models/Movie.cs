@@ -10,6 +10,7 @@ namespace Vidly.Models
         [Required]
         public string Title { get; set; }
         
+        [ForeignKey("GenreId")]
         public Genre Genre { get; set; }
         
         [Required]

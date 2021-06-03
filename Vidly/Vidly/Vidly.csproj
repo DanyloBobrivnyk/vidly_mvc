@@ -197,9 +197,13 @@
     <Compile Include="Migrations\202106031430257_AddGenreIdProperty.designer.cs">
       <DependentUpon>202106031430257_AddGenreIdProperty.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106031459356_GenreId.cs" />
-    <Compile Include="Migrations\202106031459356_GenreId.designer.cs">
-      <DependentUpon>202106031459356_GenreId.cs</DependentUpon>
+    <Compile Include="Migrations\202106031712585_GenreIdFIx.cs" />
+    <Compile Include="Migrations\202106031712585_GenreIdFIx.designer.cs">
+      <DependentUpon>202106031712585_GenreIdFIx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106031723483_CustomerModelProp.cs" />
+    <Compile Include="Migrations\202106031723483_CustomerModelProp.designer.cs">
+      <DependentUpon>202106031723483_CustomerModelProp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -324,8 +328,11 @@
     <EmbeddedResource Include="Migrations\202106031430257_AddGenreIdProperty.resx">
       <DependentUpon>202106031430257_AddGenreIdProperty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106031459356_GenreId.resx">
-      <DependentUpon>202106031459356_GenreId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106031712585_GenreIdFIx.resx">
+      <DependentUpon>202106031712585_GenreIdFIx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106031723483_CustomerModelProp.resx">
+      <DependentUpon>202106031723483_CustomerModelProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
