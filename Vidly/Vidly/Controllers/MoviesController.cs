@@ -33,9 +33,8 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             }
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = genreTypes
             };
 
@@ -45,8 +44,10 @@ namespace Vidly.Controllers
         public ActionResult New()
         {
             var genreTypes = _context.Genres.ToList();
-            var viewModel = new MovieFormViewModel
+
+            var viewModel = new MovieFormViewModel()
             {
+                
                 Genres = genreTypes
             };
 
@@ -54,8 +55,21 @@ namespace Vidly.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
         {
+            //If some of the properties are not valid => reload the page and show validation errors.
+            if(!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel(movie)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
+            //Add new movie if there is default int value provided by the view.
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
@@ -63,6 +77,7 @@ namespace Vidly.Controllers
             }
             else
             {
+                //Edit it.
                 var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
 
                 movieInDb.Title = movie.Title;
@@ -70,6 +85,7 @@ namespace Vidly.Controllers
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Movies");
@@ -83,16 +99,6 @@ namespace Vidly.Controllers
             return View(movies);
         }
 
-        [Route("Movies/Details/{id}")]
-        public ActionResult Details(int id)
-        {
-            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(k => k.Id == id);
-
-            if(movie == null)
-                return HttpNotFound();
-            
-            return View(movie);
-        }
 
         [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseYear(int year, byte? month)

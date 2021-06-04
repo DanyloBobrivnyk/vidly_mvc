@@ -205,10 +205,15 @@
     <Compile Include="Migrations\202106031723483_CustomerModelProp.designer.cs">
       <DependentUpon>202106031723483_CustomerModelProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106041215455_MoviePropChange.cs" />
+    <Compile Include="Migrations\202106041215455_MoviePropChange.designer.cs">
+      <DependentUpon>202106041215455_MoviePropChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -333,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106031723483_CustomerModelProp.resx">
       <DependentUpon>202106031723483_CustomerModelProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106041215455_MoviePropChange.resx">
+      <DependentUpon>202106041215455_MoviePropChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

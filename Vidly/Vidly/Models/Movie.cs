@@ -10,19 +10,22 @@ namespace Vidly.Models
         [Required]
         public string Title { get; set; }
         
-        [ForeignKey("GenreId")]
+        //[ForeignKey("GenreId")]
         public Genre Genre { get; set; }
         
         [Required]
+        [Display(Name = "Genre")]
         public byte GenreId { get; set; }
 
         [Required]
+        [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
         [Required]
         public DateTime DateAdded { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
+        [Range(1, 20)]
+        [Display(Name = "Number in Stock ")]
         public int NumberInStock { get; set; }
         public decimal Price { get; set; }
     }
