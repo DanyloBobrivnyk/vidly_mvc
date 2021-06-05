@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Vidly.DTOs;
 
 namespace Vidly.Models
 {
@@ -10,7 +11,9 @@ namespace Vidly.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var customer = (Customer)validationContext.ObjectInstance;
+            var customer = (Customer) validationContext.ObjectInstance;
+            //Should be refactored for Dto ???   
+
 
             if (customer.MembershipTypeId == MembershipType.Uknown)
                 return ValidationResult.Success;
