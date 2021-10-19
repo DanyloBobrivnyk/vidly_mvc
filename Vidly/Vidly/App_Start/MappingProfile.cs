@@ -14,6 +14,8 @@ namespace Vidly.App_Start
         {
             Mapper.CreateMap<Customer, CustomerDTO>();
             Mapper.CreateMap<CustomerDTO, Customer>();
+            
+            Mapper.CreateMap<MembershipType, MembershipTypeDTO>();
 
             Mapper.CreateMap<Movie, MovieDTO>()
             .ForMember(m => m.Id, opt => opt.Ignore());

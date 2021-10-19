@@ -37,7 +37,11 @@ namespace Vidly.Controllers.API
             return Ok(Mapper.Map<Movie, MovieDTO>(movie));
         }
 
-        //post api/movies
+        /// <summary>
+        /// Post api/movies 
+        /// </summary>
+        /// <param name="movieDto"></param>
+        /// <returns></returns>
         [HttpPost]
         public IHttpActionResult CreateMovie(MovieDTO movieDto)
         {
@@ -56,36 +60,40 @@ namespace Vidly.Controllers.API
                 
             return Created(new Uri(Request.RequestUri + "/" + movie.Id), movieDto);
         }
+
         //put api/movies/1
         [HttpPut]
-        public void UpdateMovie(int id, MovieDTO movieDto)
+        public IHttpActionResult UpdateMovie(int id, MovieDTO movieDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             Mapper.Map<MovieDTO, Movie>(movieDto, movieInDb);
 
             _context.SaveChanges();
+            return Ok(movieDto);
         }
+
         //delete api/movies/1
         [HttpDelete]
-        public void DeleteMovie(int id)
+        public IHttpActionResult DeleteMovie(int id)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
             _context.Movies.Remove(movieInDb);
             _context.SaveChanges();
+            return Ok(movieInDb);
         }
     }
 }

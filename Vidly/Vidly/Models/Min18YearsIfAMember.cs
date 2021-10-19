@@ -11,9 +11,8 @@ namespace Vidly.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var customer = (Customer) validationContext.ObjectInstance;
-            //Should be refactored for Dto ???   
 
+            var customer = (Customer) validationContext.ObjectInstance;
 
             if (customer.MembershipTypeId == MembershipType.Uknown)
                 return ValidationResult.Success;
