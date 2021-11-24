@@ -9,8 +9,8 @@ namespace Vidly.Models
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
-        
-        //[ForeignKey("GenreId")]
+
+        [ForeignKey("GenreId")]
         public Genre Genre { get; set; }
         
         [Required]

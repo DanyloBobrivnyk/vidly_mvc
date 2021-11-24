@@ -92,6 +92,7 @@ namespace Vidly.Controllers
         }
         
         //GET: Movies
+        [Route ("Movies")]
         public ActionResult Index()
         {
             var movies = _context.Movies.Include(m => m.Genre).ToList();
