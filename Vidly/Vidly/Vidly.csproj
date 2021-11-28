@@ -171,10 +171,6 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
-    <Compile Include="DTOs\CustomerDTO.cs" />
-    <Compile Include="DTOs\GenreDTO.cs" />
-    <Compile Include="DTOs\MembershipTypeDTO.cs" />
-    <Compile Include="DTOs\MovieDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,19 +255,7 @@
       <DependentUpon>202111242157206_IdentityFramework.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\Identities\AppRole.cs" />
-    <Compile Include="Models\Identities\AppUser.cs" />
-    <Compile Include="Models\Identities\AppUserManager.cs" />
-    <Compile Include="Models\MembershipType.cs" />
-    <Compile Include="Models\Min18YearsIfAMember.cs" />
-    <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\MovieDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
-    <Compile Include="ViewModels\MovieFormViewModel.cs" />
-    <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-custom.css" />
