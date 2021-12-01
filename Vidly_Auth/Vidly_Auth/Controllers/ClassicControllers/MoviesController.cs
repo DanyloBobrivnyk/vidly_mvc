@@ -42,13 +42,13 @@ namespace Vidly_Auth.Controllers.ClassicControllers
             return View("MovieForm", viewModel);
         }
 
-        public ActionResult New()
+        [Authorize(Roles = UserRoles.CanManageMovies)]
+        public ViewResult New()
         {
             var genreTypes = _context.Genres.ToList();
 
             var viewModel = new MovieFormViewModel()
-            {
-                
+            {   
                 Genres = genreTypes
             };
 
@@ -94,11 +94,13 @@ namespace Vidly_Auth.Controllers.ClassicControllers
         
         //GET: Movies
         [Route ("Movies")]
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
-            
-            return View(movies);
+            if (User.IsInRole(UserRoles.CanManageMovies))
+                return View("List");
+            else
+                return View("ReadOnlyList");
+
         }
 
 

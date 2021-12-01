@@ -4,19 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movies list.</h2>
-@if (!Model.Any())
-{
-    <text>There is no movies to show.</text>
-    <p>
-        @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
-    </p>
-}
-else
-{
-    <p>
-        @Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })
-    </p>
+    <h2>Movies list.</h2>
+
     <br>
 
     <div>
@@ -33,7 +22,7 @@ else
             </tbody>
         </table>
     </div>
-}
+
 
 @section scripts
 {

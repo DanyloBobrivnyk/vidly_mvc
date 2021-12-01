@@ -8,10 +8,10 @@
 @*@if (!Model.Any())
 {
     <text>There is no customers to show.</text>
-    <p>
-        @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
-    </p>
 }*@
+<p>
+    @Html.ActionLink("New Customer", "New", "Customers", null, new { @class = "btn btn-primary" })
+</p>
 
 <div>
     <table id="customers" class="table table-hover table-bordered">
