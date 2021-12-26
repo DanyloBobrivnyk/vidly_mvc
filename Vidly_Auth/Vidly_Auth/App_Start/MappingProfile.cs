@@ -20,10 +20,11 @@ namespace Vidly_Auth.App_Start
 
             Mapper.CreateMap<Movie, MovieDTO>();
             //.ForMember(m => m.Id, opt => opt.Ignore());
-            
             Mapper.CreateMap<MovieDTO, Movie>()
             .ForMember(c => c.Id, opt => opt.Ignore());
 
+
+            Mapper.CreateMap<RentalDTO, Rental>();
         }
     }
 }

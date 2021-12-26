@@ -14,6 +14,8 @@ namespace Vidly_Auth
                         "~/Scripts/respond.js",
                         "~/Scripts/Datatables/jquery.dataTables.js",
                         "~/Scripts/Datatables/dataTables.bootstrap.js",
+                        "~/Scripts/typeahead.bundle.js",
+                        "~/Scripts/toastr.js",
                         "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,7 +29,9 @@ namespace Vidly_Auth
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/Datatables/css/dataTables.bootstrap.css",
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/toastr.css",
+                      "~/Content/typeahead.css"));
         }
     }
 }

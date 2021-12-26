@@ -74,6 +74,7 @@ namespace Vidly_Auth.Controllers.ClassicControllers
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
+                movie.NumberOfAvailable = movie.NumberInStock;
                 _context.Movies.Add(movie);
             }
             else
@@ -85,6 +86,7 @@ namespace Vidly_Auth.Controllers.ClassicControllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreId = movie.GenreId;
                 movieInDb.NumberInStock = movie.NumberInStock;
+                movieInDb.NumberOfAvailable = movieInDb.NumberOfAvailable;
             }
 
             _context.SaveChanges();

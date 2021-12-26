@@ -27,6 +27,11 @@ namespace Vidly_Auth.Models
         [Range(1, 20)]
         [Display(Name = "Number in Stock ")]
         public int NumberInStock { get; set; }
+
+        [Required]
+        [Range(0, 20)]
+        [Display(Name = "Number of available disks")]
+        public int NumberOfAvailable { get; set; }
         public decimal Price { get; set; }
     }
 }

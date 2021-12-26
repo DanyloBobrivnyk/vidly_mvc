@@ -22,18 +22,20 @@ namespace Vidly_Auth.Controllers.ApiContollers
 
 
         //get api/movies
-        public IHttpActionResult GetMovies()
+        public IEnumerable<MovieDTO> GetMovies(string query = null)
         {
-
-            var movies = _context.Movies
+            var moviesQuery = _context.Movies
                 .Include(m => m.Genre)
+                .Where(m => m.NumberOfAvailable > 0);
+
+            if(!String.IsNullOrEmpty(query))
+                moviesQuery = moviesQuery.Where(c => c.Title.Contains(query));
+
+            var movieDtos = moviesQuery
                 .ToList()
                 .Select(Mapper.Map<Movie, MovieDTO>);
 
-            if (movies == null)
-                return NotFound();
-
-            return Ok(movies);
+            return movieDtos;
         }
 
         //get api/movies/1
@@ -58,8 +60,8 @@ namespace Vidly_Auth.Controllers.ApiContollers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            
             var movie = Mapper.Map<MovieDTO, Movie>(movieDto);
+            movie.NumberOfAvailable = movie.NumberInStock;
             movie.DateAdded = DateTime.Now;
 
             _context.Movies.Add(movie);

@@ -21,10 +21,17 @@ namespace Vidly_Auth.Controllers.ApiContollers
         }
 
         //get api/customers
-        public IHttpActionResult GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
-            var customers = _context.Customers
-                .Include(c => c.MembershipType)
+            var customersQuery = _context.Customers
+                .Include(c => c.MembershipType);
+
+            if(!String.IsNullOrWhiteSpace(query))
+            {
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+            }
+
+            var customers = customersQuery
                 .ToList()
                 .Select(Mapper.Map<Customer, CustomerDTO>);
 
